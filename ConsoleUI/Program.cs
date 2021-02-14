@@ -8,10 +8,20 @@ namespace ConsoleUI
     class Program
     {
         static void Main(string[] args)
-        {
+        {   // Data Transformation Object
             // CarTest();
             // IoC Container
             // BrandTest();
+            // ColorTest();
+        }
+
+        private static void ColorTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine(color.Name);
+            }
         }
 
         private static void BrandTest()
@@ -29,17 +39,17 @@ namespace ConsoleUI
 
             foreach (var car in carManager.GetAllByBrandId(2))
             {
-                Console.WriteLine(car.Name);
+                //Console.WriteLine(car.Name);
             }
 
             foreach (var car in carManager.GetAllByColorId(1))
             {
-                Console.WriteLine(car.Name);
+                //Console.WriteLine(car.Name);
             }
 
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetCarDetails())
             {
-                Console.WriteLine(("{0}  {2}", car.Description, car.DailyPrice));
+                Console.WriteLine("CarName = {0}  BrandName = {1} ColorName = {2}", car.CarName, car.BrandName, car.ColorName);
             }
         }
     }
