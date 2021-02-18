@@ -13,12 +13,33 @@ namespace ConsoleUI
             // IoC Container
             // BrandTest();
             // ColorTest();
+
+            // CarTest2();
+        }
+
+        private static void CarTest2()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+
+            var result = carManager.GetCarDetails();
+
+            if (result.Success)
+            {
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine("CarName = {0}  BrandName = {1} ColorName = {2}", car.CarName, car.BrandName, car.ColorName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
 
         private static void ColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Name);
             }
@@ -27,7 +48,7 @@ namespace ConsoleUI
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.Name);
             }
@@ -37,17 +58,17 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetAllByBrandId(2))
+            foreach (var car in carManager.GetAllByBrandId(2).Data)
             {
                 //Console.WriteLine(car.Name);
             }
 
-            foreach (var car in carManager.GetAllByColorId(1))
+            foreach (var car in carManager.GetAllByColorId(1).Data)
             {
                 //Console.WriteLine(car.Name);
             }
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine("CarName = {0}  BrandName = {1} ColorName = {2}", car.CarName, car.BrandName, car.ColorName);
             }
