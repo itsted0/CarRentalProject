@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -35,12 +36,18 @@ namespace DataAccess.Concrete.InMemory
 
         public Car Get(Expression<Func<Car, bool>> filter)
         {
-            throw new NotImplementedException();
+             throw new NotImplementedException();
+                //_cars.SingleOrDefault(filter);
         }
 
         public List<Car> GetAll()
         {
             return _cars;
+        }
+
+        public List<Car> GetAll(Func<Car,bool> filter = null)
+        {
+            return _cars.Where(filter).ToList();
         }
 
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)

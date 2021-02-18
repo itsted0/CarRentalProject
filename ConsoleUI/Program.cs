@@ -16,12 +16,24 @@ namespace ConsoleUI
             // ColorTest();
             // CarTest2();
 
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            var result = rentalManager.Add(new Rental { CarId = 4, CustomerId = 2, RentDate = DateTime.Now, ReturnDate = new DateTime(2020, 3, 15) });
-            Console.WriteLine(result.Message); 
+            //RentalTest();
+
+            CarManager carManager = new CarManager(new InMemoryCarDal());
+            foreach (var item in carManager.GetAll().Data)
+            {
+                Console.WriteLine(item.Id);
+            }
 
         }
 
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental { CarId = 4, CustomerId = 2, RentDate = DateTime.Now, ReturnDate = new DateTime(2020, 3, 15) });
+            Console.WriteLine(result.Message);
+        }
+
+        // 
 
         private static void CarTest2()
         {
