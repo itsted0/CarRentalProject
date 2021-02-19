@@ -31,14 +31,14 @@ namespace WebAPI
         {   // Autofac, Ninject, CastleWindsor, StructureMap, LightInject, DryInject --> IoC Container
             // AOP yapacaðýmýz için yukardakileri kullanaðýz
             services.AddControllers();
-            services.AddSingleton<ICarService, CarManager>();
-            services.AddSingleton<ICarDal, EfCarDal>();
-            services.AddSingleton<IBrandService, BrandManager>();
-            services.AddSingleton<IBrandDal, EfBrandDal>();
-            services.AddSingleton<IColorService, ColorManager>();
-            services.AddSingleton<IColorDal, EfColorDal>();
-            services.AddSingleton<IRentalService, RentalManager>();
-            services.AddSingleton<IRentalDal, EfRentalDal>();
+            //services.AddSingleton<ICarService, CarManager>();
+            //services.AddSingleton<ICarDal, EfCarDal>();
+            //services.AddSingleton<IBrandService, BrandManager>();
+            //services.AddSingleton<IBrandDal, EfBrandDal>();
+            //services.AddSingleton<IColorService, ColorManager>();
+            //services.AddSingleton<IColorDal, EfColorDal>();
+            //services.AddSingleton<IRentalService, RentalManager>();
+            //services.AddSingleton<IRentalDal, EfRentalDal>();
 
         }
 
