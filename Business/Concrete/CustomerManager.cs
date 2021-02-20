@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,29 +11,41 @@ namespace Business.Concrete
 {
     public class CustomerManager : ICustomerService
     {
+        ICustomerDal _customerDal;
+
+        public CustomerManager(ICustomerDal customerDal)
+        {
+            _customerDal = customerDal;
+        }
+
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer entity)
         {
-            throw new NotImplementedException();
+            _customerDal.Add(entity);
+            return new SuccessResult();
         }
 
         public IResult Delete(Customer entity)
         {
-            throw new NotImplementedException();
+            _customerDal.Delete(entity);
+            return new SuccessResult();
         }
 
         public IDataResult<List<Customer>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll());
+
         }
 
         public IDataResult<Customer> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Customer>(_customerDal.Get(p=>p.Id == id));
         }
 
         public IResult Update(Customer entity)
         {
-            throw new NotImplementedException();
+            _customerDal.Update(entity);
+            return new SuccessResult();
         }
     }
 }
