@@ -7,7 +7,7 @@ namespace Business.Concrete
     {
         public CustomerValidator()
         {
-            RuleFor(c => c.CompanyName).MaximumLength(15);
+            RuleFor(c => c.CompanyName).MaximumLength(30);
         }
     }
 }

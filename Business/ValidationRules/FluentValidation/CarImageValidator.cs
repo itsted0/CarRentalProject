@@ -1,16 +1,17 @@
 ﻿using Entities.Concrete;
 using FluentValidation;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class ColorValidator : AbstractValidator<Color>
+    public class CarImageValidator : AbstractValidator<CarImage>
     {
-        public ColorValidator()
+        public CarImageValidator()
         {
-            RuleFor(c => c.Name).MaximumLength(30);
+            //RuleFor(c => c.CarId).NotEmpty();
         }
     }
 }

@@ -18,19 +18,19 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
-        public IResult Add(Rental entity)
+        public IResult Add(Rental rental)
         {
-            if (entity.ReturnDate != null)
+            if (rental.ReturnDate != null)
             {
-                _rentalDal.Add(entity);
+                _rentalDal.Add(rental);
                 return new SuccessResult(Messages.RentAdded);
             }
             return new ErrorResult(Messages.NoInGarage);
         }
 
-        public IResult Delete(Rental entity)
+        public IResult Delete(Rental rental)
         {
-            _rentalDal.Delete(entity);
+            _rentalDal.Delete(rental);
             return new SuccessResult();
         }
 
@@ -44,9 +44,9 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(p=>p.Id==id));
         }
 
-        public IResult Update(Rental entity)
+        public IResult Update(Rental rental)
         {
-            _rentalDal.Update(entity);
+            _rentalDal.Update(rental);
             return new SuccessResult();
         }
     }
